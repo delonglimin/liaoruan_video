@@ -52,8 +52,8 @@
     </header>
     <div class="header__height__placeholder"></div>
     <slot />
-    <div class="container default__text-muted">本网站为淳渔CMS演示站，提供的电视剧和电影资源均系收集于各大视频网站<br/>
-      若本站收录的节目无意侵犯了贵司版权,请给542968439@qq.com留言,我们会及时逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。<br/>
+    <div class="container default__text-muted">本网站为聊软影视演示站，提供的电视剧和电影资源均系收集于各大视频网站<br/>
+      若本站收录的节目无意侵犯了贵司版权,请给2452036924@qq.com留言,我们会及时逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。<br/>
       本站仅供测试和学习交流。请大家支持正版。</div>
     <footer>
       Copyright {{ $dayjs().format('YYYY') }} 聊软影视网 Inc. All Rights Reserved.

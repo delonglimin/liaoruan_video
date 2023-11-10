@@ -19,6 +19,7 @@ export const useServerRequest = <T>(url: string, opts?: UseFetchOptions<T, unkno
       }
     },
     onResponseError({ response }) {
+      console.log("===========",response)
       process.client && ElMessage.error(isArray(response._data.data.msg) ? response._data.data.msg[0] : response._data.data.msg)
     }
   }

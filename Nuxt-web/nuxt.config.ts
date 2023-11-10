@@ -36,14 +36,14 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            apiBase: '/server',
+            apiBase: '/api',
             globalTitle: '聊软影视'
         }
     },
     nitro: {
         devProxy: {
             '/server': {
-                target: process.env.BASE_URL || 'http://[::1]:4000',
+                target: 'http://localhost:4000',
                 changeOrigin: true
             },
             '/external': {
@@ -53,8 +53,8 @@ export default defineNuxtConfig({
         },
         // 该配置用于服务端请求转发
         routeRules: {
-            '/server/**': {
-                proxy: process.env.BASE_URL || 'http://[::1]:4000' + '/**'
+            '/api/**': {
+                proxy: 'http://localhost:4000' + '/api/**'
             }
         }
     }
