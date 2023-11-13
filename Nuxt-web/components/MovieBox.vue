@@ -33,7 +33,7 @@
                 <h4 class="title text-overflow" :title="item.title">{{ item.title }}</h4>
                 <p class="text-overflow">
                   <template v-for="cast in item.casts">
-                    {{ cast.actor.name }}&nbsp;
+                    {{ cast.actor?cast.actor.name:'' }}&nbsp;
                   </template>
                 </p>
               </div>
