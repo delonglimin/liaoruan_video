@@ -78,7 +78,7 @@ const [{ data, refresh }, { data: newMovie }] = await Promise.all([
       'movie/list',
       {
         query: {
-          keyword: form.keyword,
+          title: form.keyword,
           pageNum: currentPage.value,
           pageSize: 30
         }

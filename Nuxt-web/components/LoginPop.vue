@@ -2,8 +2,8 @@
   <client-only>
     <el-dialog title="登录" width="360" v-model="loginDialogVisible">
       <el-form ref="formRef" :model="form" :rules="rules">
-        <el-form-item prop="email">
-          <el-input v-model="form.email" placeholder="请输入邮箱" :prefix-icon="ElIconUserFilled"></el-input>
+        <el-form-item prop="phone">
+          <el-input v-model="form.phone" placeholder="请输入手机号" :prefix-icon="ElIconUserFilled"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input type="password" v-model="form.password" placeholder="请输入密码" :prefix-icon="ElIconLock"></el-input>
@@ -19,8 +19,8 @@
 
     <el-dialog title="注册" width="360" v-model="regDialogVisible">
       <el-form ref="formRegRef" :model="regForm" :rules="regRules">
-        <el-form-item prop="email">
-          <el-input v-model="regForm.email" placeholder="请输入邮箱" :prefix-icon="ElIconUserFilled"></el-input>
+        <el-form-item prop="phone">
+          <el-input v-model="regForm.phone" placeholder="请输入手机号" :prefix-icon="ElIconUserFilled"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input type="password" v-model="regForm.password" placeholder="请输入密码" :prefix-icon="ElIconLock"></el-input>
@@ -55,20 +55,20 @@ const { proxy } = getCurrentInstance() as ComponentInternalInstance
 const formRef = ref<FormInstance>()
 const formRegRef = ref<FormInstance>()
 const form = reactive({
-  email: '542968439@qq.com',
-  password: '123456'
+  phone: '15010427400',
+  password: 'admin123'
 })
 const regForm =reactive({
-  email: '',
+  phone: '',
   password: '',
   twoPassword: ''
 })
 const rules = ref({
-  email: [{ required: true, message: '请输入邮箱地址' }],
+  phone: [{ required: true, message: '请输入手机号' }],
   password: [{ required: true, message: '请输入密码' }]
 })
 const regRules = ref({
-  email: [{ required: true, message: '请输入邮箱地址' }],
+  phone: [{ required: true, message: '请输入手机号' }],
   password: [{ required: true, message: '请输入密码' }],
   twoPassword: [{
     required: true,

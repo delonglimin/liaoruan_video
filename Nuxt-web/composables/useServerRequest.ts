@@ -9,6 +9,7 @@ export const useServerRequest = <T>(url: string, opts?: UseFetchOptions<T, unkno
     baseURL: runtimeConfig.public.apiBase,
     onRequest({ options }) {
       options.headers = (options.headers || {}) as { [key: string]: string }
+      options.headers.Platform = 'pc'
       if (token.value) {
         options.headers.Authorization = 'Bearer ' + token.value
       }

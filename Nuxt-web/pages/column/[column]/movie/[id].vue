@@ -200,7 +200,7 @@ async function getUserCollect() {
   if (!token.value) {
     isCollect.value = false
   } else {
-    const { data: userCollect } = await useServerRequest<ResData<UserMovieBase>>('/user-collect/find', {
+    const { data: userCollect } = await useServerRequest<ResData<UserMovieBase>>('/user/collect/find', {
       query: { movieId: id }
     })
     isCollect.value = !!userCollect.value?.data
@@ -212,7 +212,7 @@ async function handleCollect() {
   if (!token.value) {
     loginDialogVisible.value = true
   } else {
-    const requestUrl: string = !isCollect.value ? '/user-collect' : `/user-collect/cancel?movieId=${id}`
+    const requestUrl: string = !isCollect.value ? '/user/collect' : `/user/collect/cancel?movieId=${id}`
     const requestOpts: FetchOptions = !isCollect.value ? {
           body: { movieId: id },
           method: 'POST'
@@ -235,7 +235,7 @@ async function getUserRate() {
   if (!token.value) {
     isUserRate.value = false
   } else {
-    const { data: userRate } = await useServerRequest<ResData<UserRate>>('/user-rate', {
+    const { data: userRate } = await useServerRequest<ResData<UserRate>>('/user/rate/find', {
       query: { movieId: id },
     })
     isUserRate.value = !!userRate.value?.data
@@ -249,7 +249,7 @@ async function onRatechange(value: number) {
     loginDialogVisible.value = true
     rate.value = 0
   } else {
-    const { code } = await useClientRequest<Pick<ResOptions<unknown>, 'code'>>('/user-rate', {
+    const { code } = await useClientRequest<Pick<ResOptions<unknown>, 'code'>>('/user/rate', {
       method: 'post',
       body: { movieId: id, rate: rate.value }
     })

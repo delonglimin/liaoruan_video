@@ -167,12 +167,12 @@ const [
     query: {
       columnValue: params.column,
       genres: query.t,
-      country: query.c,
-      language: query.l,
+      countryIds: query.c,
+      languages: query.l,
       year: query.y,
       pageNum: currentPage.value,
       pageSize: 30,
-      orderBy: orderBy.value
+      orderByColumn: orderBy.value
     }
   })),
 ])
@@ -183,7 +183,7 @@ async function handleCurrentChange(page: number) {
     path: route.path,
     query: {
       ...route.query,
-      orderBy: orderBy.value,
+      orderByColumn: orderBy.value,
       page
     }
   })
