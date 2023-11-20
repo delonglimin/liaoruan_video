@@ -172,7 +172,8 @@ const [
       year: query.y,
       pageNum: currentPage.value,
       pageSize: 30,
-      orderByColumn: orderBy.value
+      orderByColumn: orderBy.value,
+      isAsc:"desc"
     }
   })),
 ])

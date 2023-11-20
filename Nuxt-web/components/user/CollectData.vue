@@ -40,7 +40,7 @@ const currentPage = ref<number>(1)
 const total = ref(0)
 
 async function getList() {
-  const { data: collectData, error } = await useServerRequest<{ rows:any[]; total: number;  code: number }>('/user-collect/findByPage', {
+  const { data: collectData, error } = await useServerRequest<{ rows:any[]; total: number;  code: number }>('/user/collect/findByPage', {
     query: {
       pageNum: currentPage.value,
       pageSize: 12

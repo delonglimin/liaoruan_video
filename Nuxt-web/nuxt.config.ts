@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     app: {
             head: {
                 viewport: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no',
-                title: '聊软影视CMS-Nodejs快速搭建影视类网站',
+                title: '聊软影视CMS-最全最新免费电影电视剧网站',
                 meta: [
                     { name: 'keywords', content: '聊软影视,最新电影，最新电视剧' },
                     { name: 'description', content: '聊软影视更新最快的影视网站之一，收集了全网最新高分电影,电视剧,综艺,动漫等热播剧目免费在线观看！' }

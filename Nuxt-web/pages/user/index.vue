@@ -2,17 +2,17 @@
   <div class="container user-index">
     <Head>
       <Title>{{ $titleRender('个人中心') }}</Title>
-      <Style type="text/css" children="body { background-color: #f7f7f7; }" />
+      <Style type="text/css" children="body { background-color: #f7f7f7; }" ></Style>
     </Head>
     <el-row :gutter="30" class="mt-20">
       <el-col :md="6" :xs="24">
-        <UserInfoData />
+        <UserInfoData :userData="userData"/>
         <el-card class="integral">
           <template #header>
             <div class="card-header">
               <div>
                 金币
-                <span>{{ goldData.data?.gold || 0 }}</span>
+                <span>{{ userData.data?.walletGold || 0 }}</span>
               </div>
               <el-button class="button" text size="small" @click="handleGoWalletLog">
                 详情
@@ -49,25 +49,29 @@ definePageMeta({
 const token = useToken()
 const activeName = ref<string>('collect')
 
+
 const [
-  { data: signData, refresh },
-  { data: goldData, refresh: refreshGold }
+{ data: userData },
+  { data: signData, refresh }
+  
 ] = await Promise.all([
+  useServerRequest('/user/info'),
   // 获取用户是否签到
-  useServerRequest<{ data: null | number }>('/user-sign/getSign'),
-  // 获取用户金币数量
-  useServerRequest<{ data: { gold: number } }>('/user-wallet/findGold')
+  useServerRequest<{ data: null | number }>('/user/sign/getSign'),
+  /* // 获取用户金币数量 */
+  /* useServerRequest<{ data: { gold: number } }>('/user/wallet/findGold') */
+  
 ])
 
 // 用户签到
 async function handleSign() {
   if (signData.value?.data) return;
-  const { code, data } = await useClientRequest<{ code: number; msg: string; data: any }>('/user-sign/sign')
+  const { code, data } = await useClientRequest<{ code: number; msg: string; data: any }>('/user/sign')
   if (code === 200) {
-    refresh();
-    refreshGold()
+    /* refresh();
+    refreshGold() */
     ElMessage({
-      message: `签到成功, ${data.signReward}`,
+      message: `签到成功, ${data.msg}`,
       type: 'success'
     })
   }

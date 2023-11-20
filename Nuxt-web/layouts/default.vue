@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import LoginPop from "~/components/LoginPop.vue";
 import { useServerRequest } from "~/composables/useServerRequest";
-
+import { useClientRequest } from "~/composables/useClientRequest";
 
 const tokenCookie = useCookie<string | undefined>('token')
 const token = useToken()
@@ -97,9 +97,11 @@ function handleCommand(command: string) {
   }
 }
 
-function logOut() {
+async function  logOut() {
+  await useClientRequest('/web/user/logout')
   tokenCookie.value = undefined
   token.value = ''
+
   if (route.path.indexOf('/user') > -1) {
     navigateTo('/')
   }

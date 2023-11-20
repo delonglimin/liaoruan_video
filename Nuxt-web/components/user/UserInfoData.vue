@@ -2,7 +2,7 @@
   <div class="bg-fff user-index__head flex">
     <img src="../../assets/images/toux.png" alt="">
     <div>
-      {{ userData.data?.email }}
+      {{ userData.data?.username }}
       <p class="grey">ID: {{ userData.data?.userId }}</p>
       <a class="lv lv1"></a>
     </div>
@@ -11,9 +11,13 @@
 
 <script setup lang="ts">
 import { useServerRequest } from "~/composables/useServerRequest";
-
+const props = defineProps({
+  userData: {
+    type: Object,
+    default: () => ({})
+  }
+})
 // 获取用户信息
-const { data: userData } = await useServerRequest<{ data: { email: string; userId: number } }>('/web/user/info')
 </script>
 
 <style lang="scss">
