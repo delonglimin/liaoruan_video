@@ -131,4 +131,5 @@ const [{ data: banner }, { data: movie }, { data: links }] = await Promise.all([
       }
     }
   }
-}</style>
+}
+</style>

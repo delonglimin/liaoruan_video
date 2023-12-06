@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ClientOnly>
       <el-empty description="您还未收藏视频噢~" v-if="movieList.length === 0" />
       <div class="video-list" v-else>
         <el-row :gutter="20">
@@ -27,7 +26,6 @@
           />
         </div>
       </div>
-    </ClientOnly>
   </div>
 </template>
 

@@ -4,25 +4,23 @@
     <header class="header">
       <div class="container between">
         <div class="header__left">
+          <img class= "logoimg" src="../assets/images/logo.png" />
           <nuxt-link to="/" class="logo">聊软影视</nuxt-link>
           <nav class="hidden-sm-and-down" v-if="route.path.indexOf('/user') === -1">
             <ul>
-              <li :class="route.path === '/' ? 'active' : ''"><NuxtLink to="/">首页</NuxtLink></li>
+              <li :class="route.path === '/' ? 'active' : ''">
+                <NuxtLink to="/">首页</NuxtLink>
+              </li>
               <li v-for="item in navigation.data" :class="route.params.column === item.value ? 'active' : ''">
-                <nuxt-link :to="`/column/${item.value}`" v-if="+item.type === 1">{{item.name}}</nuxt-link>
-                <nuxt-link :to="item.value" target="_blank" v-if="+item.type === 2">{{item.name}}</nuxt-link>
+                <nuxt-link :to="`/column/${item.value}`" v-if="+item.type === 1">{{ item.name }}</nuxt-link>
+                <nuxt-link :to="item.value" target="_blank" v-if="+item.type === 2">{{ item.name }}</nuxt-link>
               </li>
             </ul>
           </nav>
         </div>
         <div class="header__right items-center" v-if="route.path !== '/search'">
-          <el-input
-              class="w-50 m-2 mr-20"
-              placeholder="请输入搜索的影视名"
-              :suffix-icon="ElIconSearch"
-              v-model="searchValue"
-              @keyup.enter.native="handleSearch"
-          />
+          <el-input class="w-50 m-2 mr-20" placeholder="请输入搜索的影视名" :suffix-icon="ElIconSearch" v-model="searchValue"
+            @keyup.enter.native="handleSearch" />
           <ClientOnly>
             <template v-if="token">
               <el-dropdown @command="handleCommand">
@@ -43,18 +41,19 @@
       </div>
       <div class="mobile-nav hidden-sm-only hidden-sm-and-up" v-if="route.path.indexOf('/user') === -1">
         <ul>
-          <li :class="route.params.column === item.value ? 'active' : ''" :key="index" v-for="(item, index) in navigation.data">
-            <nuxt-link :to="`/column/${item.value}`" v-if="+item.type === 1">{{item.name}}</nuxt-link>
-            <nuxt-link :to="item.value" target="_blank" v-if="+item.type === 2">{{item.name}}</nuxt-link>
+          <li :class="route.params.column === item.value ? 'active' : ''" :key="index"
+            v-for="(item, index) in navigation.data">
+            <nuxt-link :to="`/column/${item.value}`" v-if="+item.type === 1">{{ item.name }}</nuxt-link>
+            <nuxt-link :to="item.value" target="_blank" v-if="+item.type === 2">{{ item.name }}</nuxt-link>
           </li>
         </ul>
       </div>
     </header>
     <div class="header__height__placeholder"></div>
     <slot />
-    <div class="container default__text-muted">本网站为聊软影视演示站，提供的电视剧和电影资源均系收集于各大视频网站<br/>
-      若本站收录的节目无意侵犯了贵司版权,请给2452036924@qq.com留言,我们会及时逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。<br/>
-      本站仅供测试和学习交流。请大家支持正版。</div>
+    <div class="container default__text-muted">本网站为聊软影视演示站，提供的电视剧和电影资源均系收集于各大视频网站<br />
+      若本站收录的节目无意侵犯了贵司版权,请给2452036924@qq.com留言,我们会及时逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。<br />
+      本站仅供测试和学习交流。请大家支持正版。模板来源淳渔</div>
     <footer>
       Copyright {{ $dayjs().format('YYYY') }} 聊软影视网 Inc. All Rights Reserved.
     </footer>
@@ -97,7 +96,7 @@ function handleCommand(command: string) {
   }
 }
 
-async function  logOut() {
+async function logOut() {
   await useClientRequest('/web/user/logout')
   tokenCookie.value = undefined
   token.value = ''
@@ -120,21 +119,32 @@ async function  logOut() {
 
   &__left {
     display: flex;
+
     .logo {
       display: flex;
       width: 150px;
       height: 55px;
       line-height: 55px;
       font-size: 24px;
-      color: #FF9900;
+      color: white;
       font-weight: bold;
       background-position: 50% 50% !important;
       background-size: cover !important;
       overflow: hidden;
+
     }
+
+    .logoimg {
+      width: 35px;
+      height: 35px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
     nav {
       ul {
         display: flex;
+
         li {
           a {
             display: inline-block;
@@ -144,6 +154,7 @@ async function  logOut() {
             padding: 0 20px;
             color: #fff;
           }
+
           &.active {
             a {
               background-color: #155FAA;
@@ -155,6 +166,7 @@ async function  logOut() {
     }
   }
 }
+
 .header__height__placeholder {
   height: 55px;
 }
@@ -170,7 +182,7 @@ footer {
   text-align: center;
 }
 
-@media only screen and (max-width:991px){
+@media only screen and (max-width:991px) {
   .header {
     position: relative;
 
@@ -186,19 +198,24 @@ footer {
       box-sizing: border-box;
       padding-top: 8px;
       z-index: 9;
+
       &::-webkit-scrollbar {
         display: none;
       }
+
       ul {
         white-space: nowrap;
+
         li {
           display: inline-block;
           position: relative;
+
           &.active {
             a {
               color: #1583f3;
             }
           }
+
           a {
             display: inline-block;
             padding: 5px 19px;
@@ -209,9 +226,8 @@ footer {
       }
     }
   }
+
   .header__height__placeholder {
     height: 46px;
   }
-}
-
-</style>
+}</style>
